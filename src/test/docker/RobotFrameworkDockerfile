@@ -1,0 +1,8 @@
+FROM ubuntu:14.04
+MAINTAINER WiseCity <admin@wise2c.com>
+
+RUN apt-get update
+RUN apt-get install -y python-pip python-dev python-paramiko gcc libssl-dev firefox
+
+RUN pip install robotframework
+RUN pip install robotframework-selenium2library
