@@ -39,7 +39,7 @@ gradle jettyRun
 ```
 pybot -d target -x target/xunit.xml -v SERVER:<IP:PORT> src/test
 ```
-#WiseBuild配置注意事项：
+# WiseBuild配置注意事项：
 
 WiseBuild 构建命令写法如下（实际中请将192.168.9.10换成正确的maven私服地址，对于WiseBuild，它就是artifactory容器所在的宿主机IP，需暴露8081端口）：
 ```
@@ -64,4 +64,14 @@ docker/Dockerfile
 镜像标签格式示例：
 ```
 192.168.9.11/wisebuild-demo/jpetstore:${BUILD_NUMBER}
+```
+
+测试环境选择：
+```
+rocketcity/robotframework-docker
+```
+
+构建命令写法（这里的192.168.9.10:9092请更换为实际部署JPetStoreDemo的访问入口）：
+```
+pybot -d target -x target/xunit.xml -v SERVER:192.168.9.10:9292 src/test
 ```
