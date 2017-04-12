@@ -39,7 +39,7 @@ gradle jettyRun
 ```
 pybot -d target -x target/xunit.xml -v SERVER:<IP:PORT> src/test
 ```
-# WiseBuild配置注意事项：
+***WiseBuild配置注意事项：***
 
 WiseBuild 构建命令写法如下（实际中请将192.168.9.10换成正确的maven私服地址，对于WiseBuild，它就是artifactory容器所在的宿主机IP，需暴露8081端口）：
 ```
