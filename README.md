@@ -39,11 +39,11 @@ gradle jettyRun
 ```
 pybot -d target -x target/xunit.xml -v SERVER:<IP:PORT> src/test
 ```
-***WiseBuild配置注意事项：***
+***WiseCloud配置注意事项：***
 
-WiseBuild 构建命令写法如下（实际中请将192.168.9.10换成正确的maven私服地址，对于WiseBuild，它就是artifactory容器所在的宿主机IP，需暴露8081端口）：
+WiseCloud 构建命令写法如下（实际中请将192.168.9.10换成正确的maven私服地址，对于WiseCloud，它就是artifactory容器所在的宿主机IP，需暴露32778端口）：
 ```
-gradle clean build -PMavenRepoServerIP=192.168.9.10
+gradle clean build -PMavenRepoServerIP=192.168.9.10 -PMavenRepoServerPort=32778
 ```
 
 构建环境选择：
@@ -65,6 +65,14 @@ docker/Dockerfile
 ```
 192.168.9.11/wisebuild-demo/jpetstore:${BUILD_NUMBER}
 ```
+
+代码扫描
+对于SonarQube7版本的参数
+```
+-Dsonar.java.binaries=build
+```
+如果是选maven编译器，这里的路径是target/classes
+如果是gradle编译器，路径则是build
 
 测试环境选择：
 ```
