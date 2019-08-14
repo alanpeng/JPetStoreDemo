@@ -19,4 +19,3 @@ FROM 172.20.8.4/demo/tomcat:7.0
 ADD jpetstore.war /usr/local/tomcat/webapps/
 
 EXPOSE 8080
-© 2019 GitHub, Inc.
