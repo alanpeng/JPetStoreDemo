@@ -1,0 +1,27 @@
+stages:
+- name: Java Compile
+  steps:
+  - runScriptConfig:
+      image: gradle
+      shellScript: gradle clean build -PMavenRepoServerIP=192.168.9.10 -PMavenRepoServerPort=32778
+- name: Code Scan
+  steps:
+  - runScriptConfig:
+      image: sonarqube:7.1
+      shellScript: sonar-scanner.bat -Dsonar.projectKey=mvndemo -Dsonar.sources=.
+        -Dsonar.host.url=http://sonarqube:9000 -Dsonar.java.binaries=./WebRoot/WEB-INF/classes
+- name: Build Image
+  steps:
+  - publishImageConfig:
+      dockerfilePath: ./Dockerfile
+      buildContext: .
+      tag: jpetstore-demo:v1
+- name: Deploy
+  steps:
+  - applyAppConfig:
+      catalogTemplate: test
+      version: test
+      name: Test
+      targetNamespace: default
+timeout: 60
+notification: {}
