@@ -14,7 +14,7 @@
 #    limitations under the License.
 #
 
-FROM 172.31.250.10/library/tomcat:7.0
+FROM 172.28.100.20/library/tomcat:8
 
 ADD jpetstore.war /usr/local/tomcat/webapps/
 
